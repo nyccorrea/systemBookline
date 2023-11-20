@@ -1,3 +1,4 @@
+import Livros.Exemplar;
 import Livros.Livro;
 
 import java.util.Scanner;
@@ -5,18 +6,24 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("----------------------------------------------------------------");
-        System.out.println("                     Bem-vindo ao BOOKLINE                      ");
-        System.out.println("----------------------------------------------------------------");
+        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("                          Bem-vindo ao BOOKLINE                              ");
+        System.out.println("-----------------------------------------------------------------------------");
         Scanner scanner = new Scanner(System.in);
 
-        // recebe os inputs para o cadastro
+        //inicia a execução do programa
         while (true) {
-            
-            System.out.println("O que deseja fazer? [1 -> cadastro no sistema | 2 -> Login ]");
+
+            System.out.println("O que deseja fazer? [1 -> cadastro no sistema | 2 -> Login | 3 -> sair ]");
             int resposta = scanner.nextInt();
 
-            if (resposta == 1) {
+            // para a execução do programa
+            if (resposta == 3) {
+                    break;
+            }
+
+            // cadastro no sistema
+            else if (resposta == 1) {
                 System.out.println("------------------------------- Cadastre-se ---------------------------------");
                 System.out.println("Por favor, informe os dados abaixo:");
                 System.out.print("Nome: ");
@@ -34,16 +41,11 @@ public class Main {
 
                 // Realiza o cadastro do usuário conforme os dados informados
                 Usuario.cadastrarUsuario(nome, matricula, cpf, email, senha, tipoUsuario);
-                // CONSULTA USUARIO
-                // } else if (resposta == 2) {
 
-                // System.out.println("---------------- Consultando usuário --------------");
-                // System.out.print("Por favor Funcionario, informe a matricula do discente: ");
-                // String consulta = scanner.next();
-                // System.out.println(consultarUsuario(consulta));
-                // System.out.println("-----------------------------------------------------");
-
-            } else if (resposta == 2) {
+                continue;
+            }
+            // login
+            else if (resposta == 2) {
                 System.out.println("---------------- LOGIN --------------");
                 scanner.nextLine(); // consumir quebra de linha residual
 
@@ -57,75 +59,121 @@ public class Main {
 
                 System.out.println("--------------------------------------");
 
+                // valida acesso
                 if (Usuario.validarAcesso(email_inserido, senha_inserida) == 1) {
-                    
-                        System.out.println("Olá usuário, o que deseja fazer?");
-                        System.out.println("[0 -> Visualizar Catálogo || 1 -> Consultar Pedido de Empréstimo  || 2 -> Gerenciar Livros ]");
-                        int decisao = scanner.nextInt();
 
-                        switch (decisao) {
-                            case 0:
-                            System.out.println("##################################################");
-                            System.out.println("                      Catálogo                    ");
-                            System.out.println("##################################################");
-                            //chamar metodo que visualiza
-                            System.out.println("##################################################");
+                    System.out.println("O que deseja fazer?");
+                    System.out.println(
+                            "[0 -> Visualizar Catálogo || 1 -> Consultar Pedido de Empréstimo  || 2 -> Gerenciar Livros || 3 -> Logout]");
 
+                    int decisao = scanner.nextInt();
+
+                    switch (decisao) {
+                        case 0:
+                            Exemplar.main(args);
                             System.out.println("Deseja realizar pedido de empréstimo? [S/N]");
                             char respPedido = scanner.next().toUpperCase().charAt(0);
-                                if(respPedido == 'S'){
-                                    System.out.println("pedido...");
-                                    //METODO
-                                }else{
-                                    System.out.println("Nenhum pedido realizado");
-                                }
-                                break;
-                        
-                            case 1:
-                                System.out.println("##################################################");
-                                System.out.println("       Consultando Pedido de Empréstimo           ");
-                                System.out.println("##################################################");
-                                
-                                //metodo
-                                break;
-                            case 2:
-                                System.out.println("##################################################");
-                                System.out.println("                 Gerenciando Livros               ");
-                                System.out.println("##################################################");
-                                scanner.nextLine(); // consumir quebra de linha residual
-                                System.out.println("-> Precisamos confirmar as credenciais...");
-                                System.out.println("Informe sua matricula:");
-                                String matricula_informada = scanner.nextLine();
-                                System.out.println("Informe seu tipo de Usuário [0 -> se for Discente | 1 -> se for Funcionario]:");
-                                int usuario_informado = scanner.nextInt();
+                            if (respPedido == 'S') {
+                                System.out.println("pedido...");
+                                // METODO
+                            } else {
+                                System.out.println("Nenhum pedido realizado");
+                            }
+                            break;
 
-                                int consulta = Usuario.consultarCredenciaisFunc(matricula_informada, usuario_informado);
+                        case 1:
+                            System.out.println("##################################################");
+                            System.out.println("       Consultando Pedido de Empréstimo           ");
+                            System.out.println("##################################################");
 
-                                if(consulta == 1) {
-                                    System.out.println("Credenciais confirmadas.");
-                                    // consulta
-                                    Livro.main(args);
-                                }else{
-                                    System.out.println("Desculpe, mas apenas usuários autorizados tem acesso a essa função :(");
+                            // adc metodo de consultar emprestimo
+                            break;
+                        case 2:
+                            System.out.println("##################################################");
+                            System.out.println("                 Gerenciando Livros               ");
+                            System.out.println("##################################################");
+                            scanner.nextLine(); // consumir quebra de linha residual
+                            System.out.println("-> Precisamos confirmar as credenciais...");
+                            System.out.println("Informe sua matricula:");
+                            String matricula_informada = scanner.nextLine();
+                            System.out.println(
+                                    "Informe seu tipo de Usuário [0 -> se for Discente | 1 -> se for Funcionario]:");
+                            int usuario_informado = scanner.nextInt();
+
+                            // valida se as credenciais são de um funcionário (retorna 1 caso for, 0 caso não for)
+                            int consulta = Usuario.consultarCredenciaisFunc(matricula_informada, usuario_informado);
+
+                            // caso for funcionario
+                            if (consulta == 1) {
+                                System.out.println("Credenciais confirmadas com sucesso.");
+                                System.out.println("O que deseja fazer? 1 -> cadastrar livro | 2 -> consultar livro | 3 -> sair do Gerenciador");
+                                int opcao = scanner.nextInt();
+
+                                switch (opcao) {
+                                    case 1:
+                                        System.out.println("----> Quantos livros deseja cadastrar?");
+                                        int quantidade = scanner.nextInt();
+
+                                        while(quantidade > 0){
+                                            System.out.println("Por favor, informe os dados abaixo:");
+                                            scanner.nextLine(); // consumir quebra de linha residual
+    
+                                            System.out.print("ISBN: ");
+                                            String isbn = scanner.nextLine();
+                                            System.out.print("Título: ");
+                                            String titulo = scanner.nextLine();
+                                            System.out.print("Ano de Publicação: ");
+                                            int anoPublicacao = scanner.nextInt();
+                                            System.out.print("Quantidade de livros: ");
+                                            int qtdDisponivel = scanner.nextInt();
+    
+                                            // Realiza o cadastro do Livro conforme os dados informados
+                                            Livro.cadastrarLivro(isbn, titulo, anoPublicacao, qtdDisponivel);
+
+                                            quantidade --;
+                                        }
+                                        break;
+                                    
+                                    case 2:
+                                        System.out.println("---------------- Consultando Livro Cadastrado --------------");
+                                        scanner.nextLine(); // consumir quebra de linha residual
+
+                                        System.out.print("Por favor Funcionario, informe o Titulo do livro: ");
+                                        String titulo_informado = scanner.nextLine();
+
+                                        System.out.print("Agora informe o ISBN do livro: ");
+                                        String isbn_informado = scanner.nextLine();
+                                        Livro.consultarLivro(titulo_informado, isbn_informado);
+                                        break;
+                                    case 3:
+                                        break;
+
+                                    // se não for opcao válida
+                                    default:
+                                        System.out.println("Valor de entrada inválida");
+                                        break;
                                 }
-                                break;
-                            default:
-                                System.out.println("Valor de entrada inválida");                            
-                                break;
-                        }
+
+                            }else{ // caso não for funcionário
+                                System.out.println(
+                                        "Desculpe, mas apenas usuários autorizados tem acesso a essa função :(");
+                            }
+                        case 3:
+                            continue;
+                    }
+                    continue;
                     
                 }
-                System.out.println("Entrada inválida :( \nVocê não possui cadastro no sistema.");
-                break;
+                //executa caso o login não for válido
+                else{
+                    System.out.println("Login inválido");
+                    continue;
+                }
 
-            } else {
-                // Caso a resposta seja diferente de 1 ou 2, encerra o loop
-                System.out.println("Entrada inválida :( \nExecute novamente...");
-                break;
             }
-            
+
+            scanner.close();
         }
 
-        scanner.close();
     }
 }

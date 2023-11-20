@@ -36,6 +36,6 @@ public class Emprestimo {
                 " do exemplar com código " + exemplar.getCodExemplar());
     }
     public static void main(String[] args) {
-        
+         
     }
 }
