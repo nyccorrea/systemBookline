@@ -22,6 +22,6 @@ public class Exemplar {
   
     //metodo consultar exemplar
     public static void main(String[] args) {
-    
+
     }
 }
