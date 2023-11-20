@@ -68,7 +68,8 @@ public class Usuario{
 
     //ArrayList que armazena os usuários cadastrados  
     public static ArrayList<Usuario> listaUsuarios = new ArrayList<>();
-   
+
+
     //metodo cadastrar usuario
     public static int cadastrarUsuario(String nome, String matricula, String cpf, String email,
             String senha, int tipoUsuario) {
@@ -106,7 +107,7 @@ public class Usuario{
             for (Usuario usuario : listaUsuarios) {
                 if (matricula.equals(usuario.getMatricula())) {
                     //retorna os dados do usuário
-                    return "Usuário encontrado:\n" +
+                    return "Usuário encontrado.\n" +
                             "Nome: " + usuario.getNome() + "\n" +
                             "Matrícula: " + usuario.getMatricula() + "\n" +
                             "CPF: " + usuario.getCpf() + "\n" +
@@ -117,6 +118,20 @@ public class Usuario{
             return "Usuário não encontrado.";
         
     }
+
+    //método que consulta credenciais para funcionário
+    public static int consultarCredenciaisFunc(String matricula, int tipoUsuario) {
+
+            for (Usuario usuario : listaUsuarios) {
+                if (matricula.equals(usuario.getMatricula()) && usuario.getTipoUsuario() == 1) {
+                    //se credenciais informadas forem corretar retorna 1
+                    return 1;
+                }
+            }
+            return 0;
+        
+    }
+    
 
     //metodo que valida Email e Senha
     public static int validarAcesso(String email, String senha) {
