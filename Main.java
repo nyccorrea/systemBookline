@@ -114,6 +114,7 @@ public class Main {
                         }
                     
                 }
+                System.out.println("Entrada inválida :( \nVocê não possui cadastro no sistema.");
                 break;
 
             } else {
