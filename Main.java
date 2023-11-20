@@ -103,6 +103,7 @@ public class Main {
 
                                 if(consulta == 1) {
                                     System.out.println("Credenciais confirmadas.");
+                                    // consulta
                                     Livro.main(args);
                                 }else{
                                     System.out.println("Desculpe, mas apenas usuários autorizados tem acesso a essa função :(");

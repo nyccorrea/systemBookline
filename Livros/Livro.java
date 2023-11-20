@@ -70,7 +70,6 @@ public class Livro {
     public static void consultarLivro() {
         // Lógica para consultar informações do livro
         for (Livro livros : listaLivros) {
-
                 //retorna os dados do usuário
                 System.out.println("Informações do livro - ISBN: " + livros.getIsbn() + ", Título: " + livros.getTitulo() +
                         ", Ano de Publicação: " + livros.getAnoPublicacao() + ", Quantidade Disponível: " + livros.getQtdDisponivel());
