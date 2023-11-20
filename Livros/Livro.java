@@ -1,4 +1,4 @@
-package classes;
+package Livros;
 
 public class Livro {
     private String isbn;
@@ -60,5 +60,9 @@ public class Livro {
     public void excluirLivro() {
         // Lógica para excluir o livro
         System.out.println("Livro excluído: " + titulo);
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("");
     }
 }

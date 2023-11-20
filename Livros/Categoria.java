@@ -1,4 +1,4 @@
-package classes;
+package Livros;
 
 public class Categoria {
     private String nomeCategoria;
