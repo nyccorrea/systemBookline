@@ -1,18 +1,15 @@
+import Livros.Exemplar;
+
 import java.util.Date;
 
 public class Emprestimo {
     //atributos
-    private int codExemplar;
+    private Exemplar codExemplar;
+    private Usuario usuario;
     private boolean situacao;
     private Date dataEmprestimo, dataDevolucao;
 
     //getters e setters
-    public int getCodExemplar() {
-        return codExemplar;
-    }
-    public void setCodExemplar(int codExemplar) {
-        this.codExemplar = codExemplar;
-    }
     public boolean isSituacao() {
         return situacao;
     }
@@ -30,6 +27,13 @@ public class Emprestimo {
     }
     public void setDataDevolucao(Date dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
+    }
+    public void registrarEmprestimo(Usuario usuario, Exemplar exemplar) {
+        this.usuario = usuario;
+        this.codExemplar = exemplar;
+        exemplar.setSituacaoExemplar(false);
+        System.out.println("Empréstimo realizado por " + usuario.getNome() +
+                " do exemplar com código " + exemplar.getCodExemplar());
     }
     public static void main(String[] args) {
         

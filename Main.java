@@ -1,3 +1,5 @@
+import Livros.Livro;
+
 import java.util.Scanner;
 
 public class Main {
@@ -68,6 +70,7 @@ public class Main {
                             System.out.println("##################################################");
                             //chamar metodo que visualiza
                             System.out.println("##################################################");
+
                             System.out.println("Deseja realizar pedido de empréstimo? [S/N]");
                             char respPedido = scanner.next().toUpperCase().charAt(0);
                                 if(respPedido == 'S'){
@@ -91,7 +94,6 @@ public class Main {
                                 System.out.println("##################################################");
                                 scanner.nextLine(); // consumir quebra de linha residual
                                 System.out.println("-> Precisamos confirmar as credenciais...");
-
                                 System.out.println("Informe sua matricula:");
                                 String matricula_informada = scanner.nextLine();
                                 System.out.println("Informe seu tipo de Usuário [0 -> se for Discente | 1 -> se for Funcionario]:");
@@ -101,6 +103,7 @@ public class Main {
 
                                 if(consulta == 1) {
                                     System.out.println("Credenciais confirmadas.");
+                                    Livro.main(args);
                                 }else{
                                     System.out.println("Desculpe, mas apenas usuários autorizados tem acesso a essa função :(");
                                 }

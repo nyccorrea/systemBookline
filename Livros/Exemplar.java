@@ -1,10 +1,24 @@
 package Livros;
+
+import java.util.ArrayList;
+
 public class Exemplar {
     //atributos
     private int codExemplar;
     private boolean situacaoExemplar;
-
-    //metodos getters e setters
+/*    private ArrayList<Livro> exemplares;
+    public void adicionarExemplar(Livro exemplar) {
+        exemplares.add(exemplar);
+    }
+    public void listarLivrosDisponiveis() {
+        System.out.println("Livros disponíveis:");
+        for (Livro exemplar : exemplares) {
+            if (exemplar.getQtdDisponivel() > 0) {
+                System.out.println("- Título: " + exemplar.getTitulo() +" ISBN: "+ exemplar.getIsbn());
+            }
+        }
+    }
+ */   //metodos getters e setters
     public int getCodExemplar() {
         return codExemplar;
     }
@@ -17,11 +31,7 @@ public class Exemplar {
     public void setSituacaoExemplar(boolean situacaoExemplar) {
         this.situacaoExemplar = situacaoExemplar;
     }
-
-    //metodo cadastrar exemplar
-  
-    //metodo consultar exemplar
     public static void main(String[] args) {
-
+        Livro.consultarLivro();
     }
 }

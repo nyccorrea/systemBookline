@@ -125,6 +125,7 @@ public class Usuario{
             for (Usuario usuario : listaUsuarios) {
                 if (matricula.equals(usuario.getMatricula()) && usuario.getTipoUsuario() == 1) {
                     //se credenciais informadas forem corretar retorna 1
+
                     return 1;
                 }
             }
@@ -139,6 +140,9 @@ public class Usuario{
         for (Usuario usuario : listaUsuarios) {
             if (email.equals(usuario.getEmail()) && senha.equals(usuario.getSenha())) {
                 return 1; // Acesso válido
+            }
+            else {
+
             }
         }
         return 0; // Acesso inválido

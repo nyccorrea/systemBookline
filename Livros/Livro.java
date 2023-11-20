@@ -46,6 +46,7 @@ public class Livro {
     public static void cadastrarLivro(String isbn, String titulo, int anoPublicacao, int qtdDisponivel) {
         // Lógica para cadastrar o livro
         Livro newLivro = new Livro();
+
         newLivro.setIsbn(isbn);
         newLivro.setTitulo(titulo);
         newLivro.setAnoPublicacao(anoPublicacao);
@@ -60,10 +61,19 @@ public class Livro {
             if(titulo.equals(livros.getTitulo()) && isbn.equals(livros.getIsbn())){
                     //retorna os dados do usuário
                     System.out.println("Informações do livro - ISBN: " + livros.getIsbn() + ", Título: " + livros.getTitulo() +
-                            ", Ano de Publicação: " + livros.getAnoPublicacao() + ", Quantidade Disponível: " + livros.getQtdDisponivel());  
+                            ", Ano de Publicação: " + livros.getAnoPublicacao() + ", Quantidade Disponível: " + livros.getQtdDisponivel());
             }else{
                             System.out.println("Dados incorretos ou inexistente.");
             }
+        }
+    }
+    public static void consultarLivro() {
+        // Lógica para consultar informações do livro
+        for (Livro livros : listaLivros) {
+
+                //retorna os dados do usuário
+                System.out.println("Informações do livro - ISBN: " + livros.getIsbn() + ", Título: " + livros.getTitulo() +
+                        ", Ano de Publicação: " + livros.getAnoPublicacao() + ", Quantidade Disponível: " + livros.getQtdDisponivel());
         }
     }
     public static void main(String[] args){
