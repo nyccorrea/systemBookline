@@ -8,6 +8,34 @@ public class Livro {
     private String titulo;
     private int anoPublicacao;
     private int qtdDisponivel;
+    private Autor autor;
+    private Categoria categoria;
+    private Editora editora;
+
+    //metodos getters e setters para composicao
+    public Autor getAutor() {
+        return this.autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
+    }
+
+    public Categoria getCategoria() {
+        return this.categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Editora getEditora() {
+        return this.editora;
+    }
+
+    public void setEditora(Editora editora) {
+        this.editora = editora;
+    }
 
     // metodos getters e setters
     public String getIsbn() {
@@ -45,24 +73,49 @@ public class Livro {
     // arrayList que armazena os livros
     public static ArrayList<Livro> listaLivros = new ArrayList<>();
 
+    // arrayList que armazena os livros
+    public static ArrayList<Autor> listaAutores = new ArrayList<>();
+
+    // arrayList que armazena os livros
+    public static ArrayList<Categoria> listaCategorias = new ArrayList<>();
+
+    // arrayList que armazena os livros
+    public static ArrayList<Editora> listaEditoras = new ArrayList<>();
+
     // Métodos
-    public static void cadastrarLivro(String isbn, String titulo, int anoPublicacao, int qtdDisponivel) {
-        // Lógica para cadastrar o livro
+    public static void cadastrarLivro(String isbn, String titulo, int anoPublicacao, int qtdDisponivel, String autor, String categoria, String descricao, String editora, String emailEditora) {
+        //construtor livro
         Livro newLivro = new Livro();
 
+        //construtor usando composicao
+        Autor newAutor = new Autor(autor);
+        Categoria newCategoria = new Categoria(categoria, descricao);
+        Editora newEditora = new Editora(editora, emailEditora);
+
+        //realiza o cadastro do livro
         newLivro.setIsbn(isbn);
         newLivro.setTitulo(titulo);
         newLivro.setAnoPublicacao(anoPublicacao);
         newLivro.setQtdDisponivel(qtdDisponivel);
+        newAutor.setAutor(autor);
+        newCategoria.setNomeCategoria(categoria);
+        newCategoria.setDescricao(descricao);
+        newEditora.setEditora(editora);
+        newEditora.setEmail(emailEditora);
+
         System.out.println("Livro " + newLivro.getTitulo() + " cadastrado!");
         listaLivros.add(newLivro);
+        listaAutores.add(newAutor);
+        listaCategorias.add(newCategoria);
+        listaEditoras.add(newEditora);
+
     }
 
     public static void consultarLivro(String titulo, String isbn) {
-        // Lógica para consultar informações do livro
+        //consultar as informações do livro
         for (Livro livros : listaLivros) {
             if (titulo.equals(livros.getTitulo()) && isbn.equals(livros.getIsbn())) {
-                // retorna os dados do usuário
+                // retorna os dados do livro
                 System.out.println(
                         "Informações do livro - ISBN: " + livros.getIsbn() + ", Título: " + livros.getTitulo() +
                                 ", Ano de Publicação: " + livros.getAnoPublicacao() + ", Quantidade Disponível: "
@@ -76,10 +129,29 @@ public class Livro {
     public static void consultarLivrosExemplares() {
         // Lógica para consultar informações do livro
         for (Livro livros : listaLivros) {
-            // retorna os dados do usuário
+            // retorna os dados do livro
             System.out.println("Informações do livro - ISBN: " + livros.getIsbn() + "\nTítulo: " + livros.getTitulo() +
-                    "\nAno de Publicação: " + livros.getAnoPublicacao() + "\nQuantidade Disponível: "
-                    + livros.getQtdDisponivel());
+                    "\nAno de Publicação: " + livros.getAnoPublicacao() + "\nQuantidade Disponível: "+ livros.getQtdDisponivel());
         }
+        for (Autor autor : listaAutores) {
+            // retorna os dados do autor
+            System.out.println("Autor: " + autor.getAutor());
+        }
+        for (Categoria categoria : listaCategorias) {
+            // retorna os dados do autor
+            System.out.println("Categoria: " + categoria.getNomeCategoria());
+        }   
+        for (Editora editora : listaEditoras) {
+            // retorna os dados da editora
+            System.out.println("editora: " + editora.getEditora());
+        }              
+    }
+
+    public static void main(String[] args) {
+        System.out.println("##################################################");
+        System.out.println("                      Catálogo                    ");
+        System.out.println("##################################################");
+        Livro.consultarLivrosExemplares();
+        System.out.println("##################################################");
     }
 }

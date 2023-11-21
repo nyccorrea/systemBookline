@@ -114,14 +114,13 @@ public class Usuario {
         for (Usuario usuario : listaUsuarios) {
             if (matricula.equals(usuario.getMatricula()) && usuario.getTipoUsuario() == 1) {
                 // se credenciais informadas forem corretar retorna 1
-
                 return 1;
             }
         }
         return 0;
     }
 
-    // metodo que valida Email e Senha
+    // metodo que valida acesso
     public static int validarAcesso(String email, String senha) {
 
         for (Usuario usuario : listaUsuarios) {

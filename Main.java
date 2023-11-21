@@ -1,4 +1,3 @@
-import Livros.Exemplar;
 import Livros.Livro;
 
 import java.util.Scanner;
@@ -70,16 +69,17 @@ public class Main {
 
                     switch (decisao) {
                         case 0:
-                            Exemplar.main(args);
+                            Livro.main(args);
                             System.out.println("Deseja realizar pedido de empréstimo? [S/N]");
                             char respPedido = scanner.next().toUpperCase().charAt(0);
                             if (respPedido == 'S') {
-                                System.out.println("pedido...");
+                                System.out.println("Informe o código do exemplar: ");
+
                                 // METODO
                             } else {
                                 System.out.println("Nenhum pedido realizado");
                             }
-                            break;
+                            continue;
 
                         case 1:
                             System.out.println("##################################################");
@@ -87,7 +87,7 @@ public class Main {
                             System.out.println("##################################################");
 
                             // adc metodo de consultar emprestimo
-                            break;
+                            continue;
                         case 2:
                             System.out.println("##################################################");
                             System.out.println("                 Gerenciando Livros               ");
@@ -117,7 +117,7 @@ public class Main {
                                         while(quantidade > 0){
                                             System.out.println("Por favor, informe os dados abaixo:");
                                             scanner.nextLine(); // consumir quebra de linha residual
-    
+                                            System.out.println("----------------- Dados Livro ---------------");
                                             System.out.print("ISBN: ");
                                             String isbn = scanner.nextLine();
                                             System.out.print("Título: ");
@@ -126,13 +126,24 @@ public class Main {
                                             int anoPublicacao = scanner.nextInt();
                                             System.out.print("Quantidade de livros: ");
                                             int qtdDisponivel = scanner.nextInt();
+                                            scanner.nextLine(); // consumir quebra de linha residual
+                                            System.out.print("Autor: ");
+                                            String autor = scanner.nextLine();
+                                            System.out.print("Categoria: ");
+                                            String categoria = scanner.nextLine();
+                                            System.out.print("Descrição da categoria: ");
+                                            String descricao = scanner.nextLine();
+                                            System.out.print("Editora: ");
+                                            String editora = scanner.nextLine();
+                                            System.out.print("Email editora: ");
+                                            String emailEditora = scanner.nextLine();
     
                                             // Realiza o cadastro do Livro conforme os dados informados
-                                            Livro.cadastrarLivro(isbn, titulo, anoPublicacao, qtdDisponivel);
+                                            Livro.cadastrarLivro(isbn, titulo, anoPublicacao, qtdDisponivel, autor, categoria, descricao, editora, emailEditora);
 
                                             quantidade --;
                                         }
-                                        break;
+                                        continue;
                                     
                                     case 2:
                                         System.out.println("---------------- Consultando Livro Cadastrado --------------");
@@ -144,7 +155,7 @@ public class Main {
                                         System.out.print("Agora informe o ISBN do livro: ");
                                         String isbn_informado = scanner.nextLine();
                                         Livro.consultarLivro(titulo_informado, isbn_informado);
-                                        break;
+                                        continue;
                                     case 3:
                                         break;
 

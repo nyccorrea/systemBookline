@@ -1,29 +1,19 @@
 package Livros;
+
 public class Autor {
-        private String nome;
 
-    public String getNome() {
-        return nome;
+    private String autor;
+
+    //construtor
+    public Autor(String autor){
+        this.autor = autor;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getAutor() {
+        return autor;
     }
 
-    // Métodos
-        public void cadastrarAutor(String nome) {
-            // Lógica para cadastrar o autor
-            setNome(nome);
-            System.out.println("Autor"+getNome()+"cadastrado!");
-        }
-
-        public void consultarAutor() {
-            // Lógica para consultar informações do autor
-            System.out.println("Informações do autor - Nome: " + nome);
-        }
-
-        public void editarAutor() {
-            // Lógica para editar informações do autor
-            System.out.println("Autor editado: " + nome);
-        }
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
+}

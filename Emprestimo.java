@@ -1,41 +1,49 @@
-import Livros.Exemplar;
-
 import java.util.Date;
 
 public class Emprestimo {
-    //atributos
-    private Exemplar codExemplar;
-    private Usuario usuario;
+    // atributos
     private boolean situacao;
     private Date dataEmprestimo, dataDevolucao;
 
-    //getters e setters
+    // getters e setters
     public boolean isSituacao() {
         return situacao;
     }
+
     public void setSituacao(boolean situacao) {
         this.situacao = situacao;
     }
+
     public Date getDataEmprestimo() {
         return dataEmprestimo;
     }
+
     public void setDataEmprestimo(Date dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
     }
+
     public Date getDataDevolucao() {
         return dataDevolucao;
     }
+
     public void setDataDevolucao(Date dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
-    public void registrarEmprestimo(Usuario usuario, Exemplar exemplar) {
-        this.usuario = usuario;
-        this.codExemplar = exemplar;
-        exemplar.setSituacaoExemplar(false);
-        System.out.println("Empréstimo realizado por " + usuario.getNome() +
-                " do exemplar com código " + exemplar.getCodExemplar());
+
+    // método para realizar empréstimo
+    public void String realizarEmprestimo() {
+        if (!situacao) {  // Verifica se o livro não está emprestado
+            situacao = true;  // Define a situação como emprestado
+            dataEmprestimo = new Date();  // Registra a data de empréstimo como a data atual
+            return "Empréstimo realizado com sucesso.";
+        } else {
+            System.out.println("Livro já emprestado.");
+        }
     }
+
     public static void main(String[] args) {
-         
+        // Exemplo de uso
+        Emprestimo emprestimo = new Emprestimo();
+        emprestimo.realizarEmprestimo();
     }
 }
