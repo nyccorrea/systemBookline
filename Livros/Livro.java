@@ -83,6 +83,7 @@ public class Livro {
     public static ArrayList<Editora> listaEditoras = new ArrayList<>();
 
     // Métodos
+
     public static void cadastrarLivro(String isbn, String titulo, int anoPublicacao, int qtdDisponivel, String autor, String categoria, String descricao, String editora, String emailEditora) {
         //construtor livro
         Livro newLivro = new Livro();
@@ -145,6 +146,20 @@ public class Livro {
             // retorna os dados da editora
             System.out.println("editora: " + editora.getEditora());
         }              
+    }
+    
+    // método para realizar empréstimo
+    public static int realizarEmprestimo(String titulo, String isbn) {
+        //percorre a lista de livros
+        for (Livro livros : listaLivros) {
+            if(titulo.equals(livros.getTitulo()) && isbn.equals(livros.getIsbn())){
+                if(livros.getQtdDisponivel() > 0){
+                    livros.setQtdDisponivel(livros.qtdDisponivel - 1);
+                    return 1;
+                }
+            }
+        }
+        return 0;
     }
 
     public static void main(String[] args) {

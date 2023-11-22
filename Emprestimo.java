@@ -30,16 +30,6 @@ public class Emprestimo {
         this.dataDevolucao = dataDevolucao;
     }
 
-    // método para realizar empréstimo
-    public void String realizarEmprestimo() {
-        if (!situacao) {  // Verifica se o livro não está emprestado
-            situacao = true;  // Define a situação como emprestado
-            dataEmprestimo = new Date();  // Registra a data de empréstimo como a data atual
-            return "Empréstimo realizado com sucesso.";
-        } else {
-            System.out.println("Livro já emprestado.");
-        }
-    }
 
     public static void main(String[] args) {
         // Exemplo de uso
