@@ -39,7 +39,7 @@ public class Emprestimo {
             dataEmprestimo = new Date();  // Registra a data de empréstimo como a data atual
             System.out.println("Empréstimo realizado com sucesso.");
         } else {
-            System.out.println("Livro já emprestado.");
+            System.out.println("Livro já está emprestado.");
         }
     }
 >>>>>>> 126cdd6a4110987ccf23a8844c4d5f455fa63da1
