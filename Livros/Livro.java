@@ -1,5 +1,4 @@
 package Livros;
-
 import java.util.ArrayList;
 
 public class Livro {
@@ -149,17 +148,19 @@ public class Livro {
     }
     
     // método para realizar empréstimo
+    
     public static int realizarEmprestimo(String titulo, String isbn) {
         //percorre a lista de livros
+        int retorno = 0;
         for (Livro livros : listaLivros) {
             if(titulo.equals(livros.getTitulo()) && isbn.equals(livros.getIsbn())){
                 if(livros.getQtdDisponivel() > 0){
                     livros.setQtdDisponivel(livros.qtdDisponivel - 1);
-                    return 1;
+                    retorno += 1;
                 }
             }
         }
-        return 0;
+        return retorno;
     }
 
     public static void main(String[] args) {

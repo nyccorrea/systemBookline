@@ -79,7 +79,7 @@ public class Main {
                                 System.out.println("Deseja realizar pedido de empréstimo? [S/N]");
                                 char respPedido = scanner.next().toUpperCase().charAt(0);
                                 if (respPedido == 'S') {
-                                    System.out.println("Informe o código o título do exemplar: ");
+                                    System.out.println("Informe o título do exemplar: ");
                                     scanner.nextLine(); // consumir quebra de linha residual
                                     String titulo = scanner.nextLine();
                                     System.out.println("Informe o isbn do livro: ");
@@ -104,6 +104,7 @@ public class Main {
                                 System.out.println("##################################################");
 
                                 // adc metodo de consultar emprestimo
+                                Emprestimo.consultarEmprestimo();
                                 continue;
                             case 2:
                                 System.out.println("##################################################");
